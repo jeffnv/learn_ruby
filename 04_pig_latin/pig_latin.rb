@@ -2,17 +2,14 @@ VOWELS = ['a','e','i','o','u']
 
 def beginning_cons_count word
   result = 1
-  if
-    word.split('').each_with_index do |char, i|
-      if(VOWELS.include?(char) && (!((char == 'u' && (word[i - 1] == 'q')))))
-        #if the vowel is a 'u' preceded by a q, consider it a consonant, keep searching for a vowel
-        result = i
-        break
-      end
+  word.split('').each_with_index do |char, i|
+    if(VOWELS.include?(char) && (!((char == 'u' && (word[i - 1] == 'q')))))
+      #if the vowel is a 'u' preceded by a q, consider it a consonant, keep searching for a vowel
+      result = i
+      break
     end
   end
-  
-  result
+result
 end
 
 def latinafy(word)
