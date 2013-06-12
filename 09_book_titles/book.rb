@@ -6,21 +6,22 @@ class Book
   def title=(title)
     arr = title.split
     arr[0] = capitalize(arr[0], true)
-    arr = arr[1..-1].map{|word|capitalize(word)}
+    arr[1..-1] = arr[1..-1].map{|word|capitalize(word)}
     @title = arr.join(' ')
   end
   
   attr_reader :title
   
-  IGNORE_LIST = %w(and or the to from when a an in)
+  IGNORE_LIST = %w(and or the to from a an in of this)
+  ALWAYS_LIST = %w(i)
   def capitalize(word, force_capital = false)
+    force_capital = true if ALWAYS_LIST.include?(word.downcase)
     if(force_capital)
-      word.upcase
+      word.capitalize
     elsif(!IGNORE_LIST.include?(word.downcase))
-      word.upcase
+      word.capitalize
     else 
       word
     end
-    
   end
 end
