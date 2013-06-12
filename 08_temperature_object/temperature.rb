@@ -44,3 +44,17 @@ class Temperature
   end
   
 end
+
+class Celsius < Temperature
+  def initialize(temp)
+    @c_temp = temp
+    @f_temp = Temperature.ctof(@c_temp)
+  end
+end
+
+class Fahrenheit < Temperature
+  def initialize(temp)
+    @f_temp = temp
+    @c_temp = Temperature.ftoc(@f_temp)
+  end
+end
