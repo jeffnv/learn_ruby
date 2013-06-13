@@ -1,18 +1,15 @@
 class Timer
-  attr_reader :seconds
+  
+  attr_accessor :seconds
+  
   def initialize(time = 0)
     @seconds = time
-  end
-  
-  def seconds=(val = 0)
-    @seconds = val
   end
   
   def time_string
     hours = @seconds/3600
     minutes = (@seconds - hours * 3600) / 60
     seconds = @seconds - (hours * 3600) - (minutes * 60)
-    
     "#{pad(hours,2)}:#{pad(minutes,2)}:#{pad(seconds,2)}"
   end
   
@@ -24,4 +21,5 @@ class Timer
     end
     str
   end
+  
 end
