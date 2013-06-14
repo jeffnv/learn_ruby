@@ -21,7 +21,8 @@ class Dictionary
   end
   
   def find(key)
-    @entries.select{|k, v| k.start_with?(key)}
+    #@entries.select{|k, v| k.start_with?(key)}
+    @entries.select{|k, v| k =~ /#{key}.*/ }
   end
   
   def printable
