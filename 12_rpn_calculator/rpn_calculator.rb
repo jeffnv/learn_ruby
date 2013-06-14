@@ -12,9 +12,15 @@ class RPNCalculator
   end
   
   def math
-    opp2 = pop
-    opp1 = pop
-    push(yield(opp1, opp2))
+    opp2 = @stack.pop
+    opp1 = @stack.pop
+    if(!opp2 || !opp1)
+      raise "calculator is empty"
+      @stack << opp1 if opp1
+      @stack << opp2 if opp2
+    else
+      push(yield(opp1, opp2))
+    end
   end
   
   def plus
@@ -30,14 +36,11 @@ class RPNCalculator
   end
   
   def divide
-    math{|x,y| x / y}
+    math{|x,y| x.to_f / y.to_f}
   end
   
-  def pop
-    if(@stack.count > 0)
-      @stack.pop
-    else
-      0
-    end
+  def tokens(str)
+    tks = str.split
   end
+
 end
