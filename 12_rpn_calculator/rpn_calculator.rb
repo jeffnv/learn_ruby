@@ -39,8 +39,18 @@ class RPNCalculator
     math{|x,y| x.to_f / y.to_f}
   end
   
+  NUMS = ('1'..'9').to_a
+  OPS = %w(+ - * /)
   def tokens(str)
-    tks = str.split
+    arr = []
+    str.each_char do |item|
+      if(NUMS.include?(item))
+        arr << item.to_i
+      elsif(OPS.include?(item))
+        arr << item.to_sym
+      end
+    end
+    arr
   end
 
 end
