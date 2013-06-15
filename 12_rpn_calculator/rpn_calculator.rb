@@ -52,5 +52,29 @@ class RPNCalculator
     end
     arr
   end
+  
+  def evaluate str
+    arr = tokens(str)
+    
+    calc = RPNCalculator.new
+    
+    arr.each do |token|
+      case token
+      when 1..9
+        calc.push token
+      when :+
+        calc.plus
+      when :-
+        calc.minus
+      when :/
+        calc.divide
+      when :*
+        calc.times
+      else
+        raise "unknown token encountered #{token}"
+      end
+    end
+    calc.value
+  end
 
 end
