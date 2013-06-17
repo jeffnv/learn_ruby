@@ -7,7 +7,7 @@ class Fixnum
       loopCount = 0
       result    = []
       
-      return "zero" if val == 0
+      result << "zero" if val == 0
       
       while val > 0
         wrds    = wordify(val % 1000)
@@ -21,7 +21,7 @@ class Fixnum
         loopCount += 1
       end
     end
-    result.join(' ').strip
+    result.join(' ')
   end
   
   private
