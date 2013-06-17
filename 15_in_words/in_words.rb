@@ -14,6 +14,7 @@ class Fixnum
         
         if(! wrds.empty?)
           result.insert(0, wrds)
+          #we don't want to add the order of magnitude thingy if its less than 1000
           result.insert(1, mag[loopCount]) if loopCount > 0
         end
         
@@ -27,6 +28,7 @@ class Fixnum
   private
   def wordify (number)
     singles     = ['', 'one', 'two', 'three', 'four','five','six','seven','eight','nine']
+    #zeroen is totally a word
     tens        = %w(zeroen ten twenty thirty forty fifty sixty seventy eighty ninety)
     teens       = %w(ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen)
     number      = number.magnitude % 1000 # keep it legal
